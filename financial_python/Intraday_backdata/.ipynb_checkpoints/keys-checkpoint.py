@@ -1,1 +1,3 @@
-key = 'PkLay5clsZyUm5TrnSQJjxuOzRMmAaRYUY42BJ1wZbErsb5LIJiInhyp1K0A0dBL'
+bkey= 'j4ZqfDnM5amL2KtszhB45XQE3T2njyzO1GxWBfxa4yzamNLz9uJhwjOI716RcCqZ'
+
+secret = 'dBvNl4T0U5faVpJuRGvwE4vuculkSQLQERIuMNlVMO24UhCU2p2HESzmJLELyquL'

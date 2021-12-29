@@ -42,11 +42,12 @@ class Deck:
                     sorted = True
     def move_cards(self,hand,num):
         for i in range(num):
-            hand.add_cards(self.pop_card())
-class Hand:
+            hand.add_card(self.pop_card())
+
+class Hand(Deck):
     """represent a hand of playing cards"""
     def __init__(self,label=''):
         self.cards = []
         self.label = label
-queen_of_diamonds = Card(1,12)
-print(queen_of_diamonds)
+
+#print(Deck().deal_hands(4,4))
