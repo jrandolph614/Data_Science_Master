@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class='head align-text-center'>
+    <h3>Welcome to DeepDesign</h3>
+<h5>Logo Design and Branding Driven by Artificial Intelligence</h5>
+</div>
+
+<div class="container bg-light" id='program' style="padding: 5px;">
+    <div class="row">
+        <div class="col-sm-4">
+            <div>
+                <p>Please Click on the Button to proceed to generate an image</p>
+                <form action="/generate" method='post' >
+                    <input class = 'btn btn-secondary' type="submit" name="button" id="" value="Generate!" >
+                </form>
+            </div>
+            <br>
+            <div id="spinDiv" style="display: none;" >
+            <strong>Doing Science! </strong>
+                <div id="spinDiv"class="spinner-border ms-auto  text-secondary" role="status" aria-hidden="true"></div>
+            </div>
+        </div>
+        <div class="col-lg-8" >
+            <div >
+                <img id='picture' src= "{{url_for('static',filename='assets/base/base.png')}}" class="img-fluid" alt="Responsive image" style='padding: 5px;'>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+install.packages("openxlsx")
+library(openxlsx)
+```
+
+```{r}
+#1
+mins2008 <- c(3.5,7.2,1.7,4.1,5.5,5.6,3.2,6.1,6.7,3.0,2.5,6.6,1.2,2.2,2.4,1.5,5.5,3.4,4.5,6.6)
+mins2003 <- c(5.7,3.3,1.8,3.2,3.4,2.4,3.3,4.6,3.4,3.3,3.3,2.3,3.2,4.7,2.5,1.6,3.5,2.5,5.6,1.4)
+true2003 <- 3.3
+true2008 <- 4.4
+mean2008 <- mean(mins2008)
+mean2003 <- mean(mins2003)
+std2008 <-  sd(mins2008)
+std2003 <-  sd(mins2003)
+z <- (mean2008-mean2003)/sqrt((std2008/20)+(std2003/20))
+res <- 1- pnorm(z)
+print(paste("the pvalue of the z score is statistically significant with a value of ",res))
+```
+
+
+```{r}
+#2
+xlsxFile <- system.file("extdata","HW_2_R.xlsx", package = "openxlsx")
+df1 <- read.xlsx(xlsxFile = "HW_2_R.xlsx", sheet = 3, skipEmptyRows = FALSE)
+df1$d <- df1$After - df1$Before 
+df1$d2 <- (df1$After - df1$Before)**2
+z <- qnorm(1-0.005)
+test <- ((mean(df1$After)-mean(df1$Before))/sqrt(((sd(df1$After)**2)/38)+((sd(df1$Before)**2)/38)))
+res <- 1-pnorm(test)
+print(paste("the pvalue of the z score is statistically significant with a value of ",res))
+```
+
+
+```{r}
+avgInsurance  <-817
+xlsxFile <- system.file("extdata","HW_2_R.xlsx", package = "openxlsx")
+df1 <- read.xlsx(xlsxFile = "HW_2_R.xlsx", sheet = 4, skipEmptyRows = FALSE)
+test  <- (mean(df1$Expense)- avgInsurance)/(sd(df1$Expense)/sqrt(length(df1$Expense)))
+za <- qnorm(1-0.05)
+lower <- mean(df1$Expense)-za*(sd(df1$Expense)/sqrt(length(df1$Expense))) 
+upper <- mean(df1$Expense)+za*(sd(df1$Expense)/sqrt(length(df1$Expense)))
+res <- 1-pnorm(test)
+print(paste("the pvalue of the z score is statistically significant with a value of ",res,". The mean falls below the lower threshold with the lower portion of the confidence interval being 825 "))
+

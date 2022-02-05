@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div class='head align-text-center'>
+    <h3>Welcome to DeepDesign</h3>
+<h5>Logo Design and Branding Driven by Artificial Intelligence</h5>
+</div>
+
+<div class="container bg-light" id='program' style="padding: 5px;">
+    <div class="row">
+        <div class="col-sm-4">
+            <div>
+                <p>Please Click on the Button to proceed to generate an image</p>
+                <form method="post">
+                    <input class = 'btn btn-secondary' type="submit" name="button" id="" value="Generate!">
+                </form>
+                <p style='padding: 3px;'>Image Seed: {{seed}}</p>
+            </div>
+        </div>
+        <div class="col-lg-8" > 
+            <div>
+                <img id="picture" src="{{path}}" class="img-fluid" alt="Responsive image" style='padding: 5px;'>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

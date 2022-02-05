@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div></div>
+<br>
+<br>
+<div class="container bg-light" id='program' style="padding: 5px;">
+    <p>DeepDesign utilizes state-of-the-art Artificial Intelligence to help startups build their visual identity and brand for a fraction of the cost of big firms. 
+        Our generative algorithms paired with our design consultants can create superior visual content that is always unique.
+        </p>
+</div>
+<br>
+<div class="container bg-light" id='program' style="padding: 5px;">
+    <h3>Contact Us</h3>
+    <p>33 Irving Place, New York, NY 10003</p>
+    <p>deepdesigninfo21@gmail.com</p>
+    <p>9088504759</p>
+</div>
+<br>
+<div class="container bg-light" id='program' style="padding: 5px;">
+    <img src= "{{url_for('static',filename='assets/base/about.png')}}" class="img-fluid" alt="Responsive image" style='padding: 5px;'>
+</div>
+{% endblock %}
