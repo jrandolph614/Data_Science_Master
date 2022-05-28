@@ -1,0 +1,53 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+# question 2
+library(openxlsx)
+xlsxFile <- system.file("extdata","Test3_Appl_Reg_V1_Data.xlsx", package = "openxlsx")
+df1 <- read.xlsx(xlsxFile = "Test3_Appl_Reg_V1_Data.xlsx", skipEmptyRows = FALSE,sheet = 2)
+ml<- lm(Y~X,data=df1)
+summary(ml)
+library(car)
+durbinWatsonTest(ml, max.lag=1, simulate=TRUE, reps=10000,
+    method="normal", alternative="positive")
+library(orcutt)
+c <- cochrane.orcutt(ml)
+summary(c)
+y <- 68.52417+ 3.79867* 11
+y
+#at a p-value of 0.0244 we can reject the null hypothesis and assume the auto-correlation exists
+# the ability to read will be 110.3095 at 11 illumination
+```
+```{r}
+# question 2
+library(openxlsx)
+xlsxFile <- system.file("extdata","Test3_Appl_Reg_V1_Data.xlsx", package = "openxlsx")
+df2 <- read.xlsx(xlsxFile = "Test3_Appl_Reg_V1_Data.xlsx", sheet = 1, skipEmptyRows = FALSE)
+ml2 <- glm(Y~X ,data=df2, family = binomial)
+summary(ml2)
+y<- 1/ (1+exp(-4.80751-0.12508*40.00)) 
+y
+# The probability of renewal  if the dollar increase in annual dues is $40.00 is 0.9999451
+oddsb <- exp((-0.12508-1.96)*10.00)
+oddsb
+oddsp <- exp((-0.12508+1.96)*10.00)
+oddsp
+# The Ci for the odds ratio is (8.802633e-10,93101421)
+# the model is not fit at a 3% confidence interval level
+# ec
+odds <- exp((-0.12508)*5.00)
+odds
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

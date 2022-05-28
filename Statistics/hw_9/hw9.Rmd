@@ -1,0 +1,81 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+#question  1 
+#part a
+library(openxlsx)
+xlsxFile <- system.file("extdata","hw_9_data.xlsx", package = "openxlsx")
+df <- read.xlsx(xlsxFile = "hw_9_data.xlsx", sheet = 1, skipEmptyRows = FALSE)
+
+mdl1= glm( y ~ x, data = df, family = binomial)
+#part b
+summary(mdl1)
+
+#install.packages("ResourceSelection")
+library(ResourceSelection)
+hoslem.test(df$y,fitted(mdl1), g=8) 
+#part c
+OR=exp(coef(mdl1))
+OR
+#part d
+df$xsq=df$x^2
+mdl1b= glm ( y ~ x + xsq, data = df, family = binomial)
+summary(mdl1b)
+```
+```{r}
+#question  1 
+#part a
+library(openxlsx)
+xlsxFile <- system.file("extdata","hw_9_data.xlsx", package = "openxlsx")
+df <- read.xlsx(xlsxFile = "hw_9_data.xlsx", sheet = 2, skipEmptyRows = FALSE)
+
+mdl2= glm( y ~ x1+x2, data = df, family = binomial)
+#part b
+summary(mdl2)
+hoslem.test(df$y,fitted(mdl2), g=8)
+#part c
+OR=exp(coef(mdl2)) 
+OR
+#part d
+nwdt=with(df, data.frame(x1=45000, x2=5)) 
+#################
+pct=0.95
+######################
+nwdt2=subset(cbind(nwdt,predict(mdl2,newdata=nwdt, type="link", se=TRUE)),select = -c(residual.scale))
+##########################
+nwdt3=within(nwdt2,{PredictedProb <- plogis(fit)
+    LL <- plogis(fit - (qnorm((1+pct)/2) * se.fit))
+    UL <- plogis(fit + (qnorm((1+pct)/2) * se.fit))})
+nwdt3
+#part e
+df$x12=df$x1*df$x2
+mdl2b= glm ( y ~ x1 + x2 + x12, data = df, family = binomial)
+summary(mdl2b) 
+#part f
+pct2=0.95
+
+CI_lower1 = coefficients(mdl2)[2] - (qnorm((1+pct2)/2))*summary(mdl2)$coefficients[2,2]
+CI_upper1 = coefficients(mdl2)[2] + (qnorm((1+pct2)/2))*summary(mdl2)$coefficients[2,2]
+
+CI_lower1
+CI_upper1
+
+CI_lower2 = coefficients(mdl2)[3] - (qnorm((1+pct2)/2))*summary(mdl2)$coefficients[3,3]
+CI_upper2 = coefficients(mdl2)[3] + (qnorm((1+pct2)/2))*summary(mdl2)$coefficients[3,3]
+
+CI_lower2
+CI_upper2
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

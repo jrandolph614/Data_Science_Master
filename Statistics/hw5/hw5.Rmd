@@ -1,0 +1,49 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+#problem 1
+library(openxlsx)
+xlsxFile <- system.file("extdata","data-table-B8.xlsx", package = "openxlsx")
+df <- read.xlsx(xlsxFile = "data-table-B8.xlsx", sheet = 1, skipEmptyRows = FALSE)
+lm <- lm(formula=y~x1+x2, data=df )
+print(summary(lm))
+lm.stdress <- rstandard(lm)
+qqnorm(lm.stdress, ylab="Standardized Residuals",  xlab="Normal Scores", main="Clathrates")
+qqline(lm.stdress)
+print("b) The graph shows that the distrobution is heavy tailed with above the line in lower percentile and below the line in higer percentile.")
+plot(lm)
+print("c) The graph is an idea graph with the distribution of points centered arund the line however point 34,35 and 28 seem to be outliers")
+df
+```
+```{r}
+library(openxlsx)
+xlsxFile <- system.file("extdata","data-table-B10.xlsx", package = "openxlsx")
+df <- read.xlsx(xlsxFile = "data-table-B10.xlsx", sheet = 1, skipEmptyRows = FALSE)
+lm <- lm(formula=y~x1+x2, data=df )
+print(summary(lm))
+lm.stdress <- rstandard(lm)
+qqnorm(lm.stdress, ylab="Standardized Residuals",  xlab="Normal Scores", main="Clathrates")
+qqline(lm.stdress)
+print("b) The graph shows an ideal distribution with most of the data fitting to the line.")
+plot(lm)
+print("c) the graph shows that the relatioship is not linear.")
+PRESS <- function(model) {
+    i <- residuals(model)/(1 - lm.influence(model)$hat)
+    sum(i^2)
+}
+ res <-PRESS(lm)
+ print(res)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

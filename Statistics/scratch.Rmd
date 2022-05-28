@@ -1,0 +1,73 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+col2 <- c(1.55, 1.95, 1.98, 1.64, 0.89, 1.47, 2.28 ,2.60)
+col1 <- c(12.42, 13.26, 14.24, 14.87, 15.41, 17.14,19.07, 20.46)
+df = data.frame(col1,col2)
+Ex = sum(df[1])
+Ey = sum(df[2])
+Exy = sum(df[1]*df[2])
+Ex2 = sum(df[1]**2)
+Ey2 = sum(df[2]**2)
+#scatter.smooth(x=df$col1,y=df$col2)
+linmod <- lm(col2~col1, data=df)
+pred <- linmod$coefficients[1] + linmod$coefficients[2]* 18.0
+cat("estimated net income will be: ",pred)
+linmod$
+```
+
+
+```{r}
+b1 <- function(Sxy,Sxx) {
+  return(Sxy/Sxx)
+}
+Sxy <- function(Exy,n, xmean, ymean) {
+  return(Exy-(n*xmean*ymean))
+}
+Sxx <- function(Ex2,n,xmean) {
+  return(Ex2-(n*xmean**2))
+}
+Syy <- function(Ey2,n, ymean) {
+  return(Ey2-(n*ymean**2))
+}
+b0 <- function(ymean,b1,xmean) {
+  return(ymean-b1*xmean)
+}
+```
+
+
+
+```{r}
+Sxx1 <- Sxx(1930,6,15.33)
+Syy1<- Syy(Ey2=620394,n=6,ymean=275.33)
+Sxy1<- Sxy(34602,6,15.33,275.33)
+Syy1
+```
+```{r}
+275.33-(17.8425*15.33)
+```
+```{r}
+r = Sxy1/sqrt(Sxx1*Syy1)
+```
+
+
+```{r}
+(r*sqrt(4))/sqrt(1-r**2)
+```
+```{r}
+pt(q=7.68406,df=(23+22-2),lower.tail = FALSE)
+```
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

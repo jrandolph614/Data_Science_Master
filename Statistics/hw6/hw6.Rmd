@@ -1,0 +1,68 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(openxlsx)
+xlsxFile <- system.file("extdata","data_table_B15.xlsx", package = "openxlsx")
+df <- read.xlsx(xlsxFile = "data_table_B15.xlsx", sheet = 1, skipEmptyRows = FALSE)
+df
+ml <- lm(MORT~PRECIP+EDUC+NONWHITE+NOX+SO2, data=df)
+summary(ml)
+#anova(ml)
+```
+
+
+```{r}
+AIC(ml)
+BIC(ml)
+```
+
+
+```{r}
+confint(ml,level=0.95)
+```
+```{r}
+#install.packages("olsrr")
+library(olsrr)
+K=ols_step_all_possible(ml)
+K[order(K$rsquare),]
+K2=ols_step_best_subset(ml)
+K2
+#plot(K)
+```
+```{r}
+K2
+```
+```{r}
+##forwards
+
+K3=ols_step_forward_p(ml,pent=0.05,progress=TRUE,details=TRUE)   
+K3
+```
+```{r}
+##backwards
+K5=ols_step_backward_p(ml,prem=0.05)   ### BASED ON P-VALUES ###
+K5
+```
+```{r}
+# stepwise using p value
+K7=ols_step_both_p(ml, details = TRUE, pent=0.05, prem=0.1)
+K7
+```
+```{r}
+ml <- lm(MORT~PRECIP+EDUC+NONWHITE+SO2, data=df)
+summary(ml)
+plot(ml)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

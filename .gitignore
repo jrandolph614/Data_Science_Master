@@ -1,7 +1,8 @@
 Big_Data_Algorithms/
 financial_python/Intraday_backdata/keys.py
 financial_python/trading_bot/keys.py
-financial_python/Williams_Fractal_Indicator/keys.pyBig_Data_Algorithms/final project/Twitch_data/ICWSM19_data/sodapoppin.pkl
+financial_python/Williams_Fractal_Indicator/keys.py
+Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/sodapoppin.pkl
 Big_Data_Algorithms/final project/Twitch_data.zip
 Big_Data_Algorithms/final project/Twitch_data.zip.7z
 AI_concepts_to_market/Webpage/static/assets/model/model.pkl
@@ -47,4 +48,49 @@ Big_Data_Algorithms/final project/Twitch_data.zip.7z
 financial_python/Williams_Fractal_Indicator/backtest_usd.db
 financial_python/Williams_Fractal_Indicator/backtest_usdt.db
 financial_python/Williams_Fractal_Indicator/backtest_usd_twomonths.db
-
+pandas/kaggle.json
+./.git/objects/7f/bb5bc0ed705da6948dae8a78db9c5443734d1e
+./.git/objects/83/4422fb6f8f180da4ac09953512b49f3a5d796b
+./AI_concepts_to_market/Webpage/static/assets/model/model.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/admiralbahroo.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/admiralbulldog.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/b0aty.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/cohhcarnage.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/cryaotic.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/dafran.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/dakotaz.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/dansgaming.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/disguisedtoasths.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/drlupo.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/forsen.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/giantwaffle.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/goldglove.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/highdistortion.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/imaqtpie.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/joshog.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/lirik.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/loltyler1.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/maximilian_dood.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/moonmoon_ow.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/nickmercs.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/ninja.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/nl_kripp.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/quin69.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/shiphtur.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/shroud.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/singsing.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/sodapoppin.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/summit1g.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/sypherpk.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/thijshs.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/timthetatman.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/tsm_hamlinz.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/tsm_myth.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/voyboy.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/xchocobars.pkl
+./Big_Data_Algorithms/final project/Twitch_data/ICWSM19_data/xqcow.pkl
+./Big_Data_Algorithms/final project/Twitch_data.zip
+./Big_Data_Algorithms/final project/Twitch_data.zip.7z
+./financial_python/Williams_Fractal_Indicator/backtest_usd.db
+./financial_python/Williams_Fractal_Indicator/backtest_usdt.db
+./financial_python/Williams_Fractal_Indicator/backtest_usd_twomonths.db

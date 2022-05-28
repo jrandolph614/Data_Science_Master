@@ -1,0 +1,49 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(openxlsx)
+xlsxFile <- system.file("extdata","Test2_Appl_Reg_v3_Data.xlsx", package = "openxlsx")
+df <- read.xlsx(xlsxFile = "Test2_Appl_Reg_v3_Data.xlsx", sheet = 1, skipEmptyRows = FALSE)
+df
+ml <- lm(Y~X1+X2+X3, data=df)
+summary(ml)
+```
+```{r}
+library(olsrr)
+f1 <- ols_step_forward_p(ml,pent=0.05,progress=TRUE)
+b1 <- ols_step_backward_p(ml,prem=0.05)
+```
+```{r}
+f1$model
+f1$adjr
+# final estimated model with forwards selection is y = a + b2x2
+```
+```{r}
+b1$model
+b1$adjr
+# final estimated model with backwards selection is y = a + b1x1 + b3x3
+```
+```{r}
+anova(ml)
+qf(0.05,1,17,lower.tail = FALSE)
+```
+
+
+
+
+
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
